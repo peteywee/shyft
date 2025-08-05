@@ -1,48 +1,33 @@
-/* src/index.css — streamlined for Tailwind v4 */
-
-/* 1  Load Tailwind layers */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* 2  Project-wide tweaks */
-@layer base {
-  :root {
-    /* system font stack */
-    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-  }
-
-  html {
-    @apply bg-background text-foreground;
-  }
-
-  /* Links adopt Tailwind token colors so they respect dark mode */
-  a {
-    @apply font-medium text-primary hover:text-primary-700;
-  }
-
-  /* Remove default margins—Tailwind applies spacing via classes */
-  body {
-    @apply m-0 min-h-screen;
-  }
-
-  h1 {
-    @apply text-4xl font-bold leading-tight;
-  }
-
-  button {
-    @apply rounded border border-transparent px-4 py-2 font-medium
-           text-primary transition-colors duration-200
-           hover:border-primary focus-visible:outline focus-visible:outline-2;
-  }
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 0%;
+  --card: 0 0% 100%;
+  --border: 0 0% 90%;
+  --input: 0 0% 85%;
+  --ring: 0 0% 70%;
+  --destructive: 0 100% 50%;
+  --muted: 0 0% 70%;
+  --accent: 0 0% 95%;
+  --popover: 0 0% 98%;
+  --primary: 220 90% 56%;
+  --secondary: 240 5% 84%;
 }
 
-/* 3  Light-mode overrides (Tailwind already handles dark via class) */
-@media (prefers-color-scheme: light) {
-  :root {
-    /* Nothing here unless you need custom CSS vars;
-       Tailwind’s `light` class can do targeted overrides */
-  }
+.dark {
+  --background: 0 0% 10%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 15%;
+  --border: 0 0% 25%;
+  --input: 0 0% 30%;
+  --ring: 0 0% 40%;
+  --destructive: 0 100% 60%;
+  --muted: 0 0% 50%;
+  --accent: 0 0% 20%;
+  --popover: 0 0% 20%;
+  --primary: 220 90% 66%;
+  --secondary: 240 5% 24%;
 }

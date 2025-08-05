@@ -1,24 +1,20 @@
-import { Outlet, Link } from 'react-router-dom'
-import ThemeToggle from '@/components/ThemeToggle'
-import RequireAuth from '@/components/RequireAuth'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Dashboard from './pages/Dashboard';
+import Login from './auth/Login';
+import Register from './auth/Register';
 
-export default function App() {
+function App() {
   return (
-    <RequireAuth>
-      <div className="min-h-screen flex flex-col">
-        <header className="flex items-center justify-between p-4 shadow">
-          <nav className="flex gap-4 font-medium">
-            <Link to="/"        className="hover:underline">Shifts</Link>
-            <Link to="/pay"     className="hover:underline">Pay</Link>
-            <Link to="/settings" className="hover:underline">Settings</Link>
-          </nav>
-          <ThemeToggle />
-        </header>
-
-        <main className="flex-1 p-6">
-          <Outlet />
-        </main>
-      </div>
-    </RequireAuth>
-  )
+    <Router>
+      <main className="min-h-screen bg-background text-foreground p-4">
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </main>
+    </Router>
+  );
 }
+
+export default App;
