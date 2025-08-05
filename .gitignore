@@ -1,23 +1,24 @@
-# --- Node ------------------------------------------------------------
-node_modules/
+# Logs
+logs
+*.log
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 pnpm-debug.log*
-package-lock.json
+lerna-debug.log*
 
-# --- Build artefacts -------------------------------------------------
-dist/
-build/
-src/tw.out.css                # generated Tailwind build (optional)
+node_modules
+dist
+dist-ssr
+*.local
 
-# --- Supabase local scratch -----------------------------------------
-supabase/.temp/
-supabase/.output/
-
-# --- Environment / secrets ------------------------------------------
-.env*
-!.env.example
-
-# --- IDE / OS --------------------------------------------------------
-.vscode/
-.idea/
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
 .DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
