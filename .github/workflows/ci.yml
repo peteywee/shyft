@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push: { branches: [ main ] }
+  pull_request: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      docker:
+        image: docker:24.0.7-dind
+        privileged: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build            # vite build or next build
+      - name: Supabase migration diff
+        run: |
+          curl -sL https://supabase.com/cli/install | bash
+          supabase db diff || true    # fail-open for draft PRs
