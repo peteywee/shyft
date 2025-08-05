@@ -1,1 +1,6 @@
+# Good entries in .gitignore
+.env
+node_modules/
+dist/
+supabase/.temp
 your above content
