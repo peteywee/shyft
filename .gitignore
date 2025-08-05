@@ -1,6 +1,30 @@
-# Good entries in .gitignore
-.env
+cat > .gitignore <<'EOF'
+# --- Core Node / npm -------------------------------------------------
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+package-lock.json
+.pnpm-debug.log
+
+# --- Build artefacts -------------------------------------------------
 dist/
-supabase/.temp
-your above content
+build/
+supabase/.temp/          # CLI scratch dir
+supabase/.output/        # edge runtime builds
+src/tw.out.css           # Tailwind compiled CSS (re-buildable)
+
+# --- Environment & secrets ------------------------------------------
+.env*
+!.env.example            # keep the template
+
+# --- IDE miscellany --------------------------------------------------
+.vscode/
+.idea/
+.DS_Store
+
+# --- Docker ----------------------------------------------------------
+*.local
+**/tmp_docker_*/
+
+EOF
